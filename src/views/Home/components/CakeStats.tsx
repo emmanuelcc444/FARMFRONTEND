@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody, Heading, Text } from '@pancakeswap-libs/uikit'
+import { Card, CardBody, Heading, Text } from 'tinvs-uikit'
 import BigNumber from 'bignumber.js/bignumber'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -27,41 +27,41 @@ const CakeStats = () => {
   const totalSupply = useTotalSupply()
   const burnedBalance = useBurnedBalance(getCakeAddress())
   const farms = useFarms();
-  const TINvSPrice = usePriceCakeBusd();
+  const eggPrice = usePriceCakeBusd();
   const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0);
-  const cakeSupply = getBalanceNumber(circSupply);
-  const marketCap = TINvSPrice.times(circSupply);
+  const cakeSupply = getBalanceNumber(circSupply, 0);
+  const marketCap = eggPrice.times(circSupply);
 
-  let TINVSPerBlock = 0;
+  let hnycmbPerBlock = 0;
   if(farms && farms[0] && farms[0].TINVSPerBlock){
-    TINVSPerBlock = new BigNumber(farms[0].TINVSPerBlock).div(new BigNumber(10).pow(18)).toNumber();
+    hnycmbPerBlock = new BigNumber(farms[0].TINVSPerBlock).div(new BigNumber(10).pow(18)).toNumber();
   }
 
   return (
     <StyledCakeStats>
       <CardBody>
         <Heading size="xl" mb="24px">
-          {TranslateString(534, 'TINVS Stats')}
+          {TranslateString(534, 'Egg Stats')}
         </Heading>
         <Row>
           <Text fontSize="14px">{TranslateString(10005, 'Market Cap')}</Text>
-          <CardValue fontSize="14px" value={getBalanceNumber(marketCap)} decimals={0} prefix="$" />
+          <CardValue fontSize="14px" value={getBalanceNumber(marketCap, 0)} decimals={0} prefix="$" />
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(536, 'Total Minted')}</Text>
-          {totalSupply && <CardValue fontSize="14px" value={getBalanceNumber(totalSupply)} decimals={0} />}
+          {totalSupply && <CardValue fontSize="14px" value={getBalanceNumber(totalSupply, 0)} decimals={0} />}
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(538, 'Total Burned')}</Text>
-          <CardValue fontSize="14px" value={getBalanceNumber(burnedBalance)} decimals={0} />
+          <CardValue fontSize="14px" value={getBalanceNumber(burnedBalance, 0)} decimals={0} />
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(10004, 'Circulating Supply')}</Text>
           {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} decimals={0} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(540, 'New TINVS/block')}</Text>
-          <Text bold fontSize="14px">{TINVSPerBlock}</Text>
+          <Text fontSize="14px">{TranslateString(540, 'New HNY/block')}</Text>
+          <Text bold fontSize="14px">{hnycmbPerBlock}</Text>
         </Row>
       </CardBody>
     </StyledCakeStats>

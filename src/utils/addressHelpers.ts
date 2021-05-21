@@ -5,6 +5,9 @@ const chainId = process.env.REACT_APP_CHAIN_ID
 export const getCakeAddress = () => {
   return addresses.cake[chainId]
 }
+export const getBeeAddress = () => {
+  return addresses.bee[chainId]
+}
 export const getMasterChefAddress = () => {
   return addresses.masterChef[chainId]
 }

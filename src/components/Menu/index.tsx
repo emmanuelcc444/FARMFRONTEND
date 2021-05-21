@@ -3,15 +3,18 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { allLanguages } from 'config/localisation/languageCodes'
 import { LanguageContext } from 'contexts/Localisation/languageContext'
 import useTheme from 'hooks/useTheme'
-import { usePriceCakeBusd } from 'state/hooks'
-import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
+import { usePriceCakeBusd, usePriceBeeBusd } from 'state/hooks'
+import { Menu as UikitMenu } from 'tinvs-uikit'
 import config from './config'
+import { getCakeAddress, getBeeAddress } from '../../utils/addressHelpers'
+
 
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
   const cakePriceUsd = usePriceCakeBusd()
+  const beePriceUsd = usePriceBeeBusd()
 
   return (
     <UikitMenu
@@ -23,9 +26,11 @@ const Menu = (props) => {
       currentLang={selectedLanguage && selectedLanguage.code}
       langs={allLanguages}
       setLang={setSelectedLanguage}
+      beePriceUsd={ beePriceUsd.toNumber() }
       cakePriceUsd={cakePriceUsd.toNumber()}
       links={config}
-      priceLink="https://www.coingecko.com/en/coins/tinville"
+      beePriceLink="https://www.coingecko.com/en/coins/tinville"
+      priceLink={ "https://poocoin.app/tokens/".concat( getCakeAddress() ) }
       {...props}
     />
   )

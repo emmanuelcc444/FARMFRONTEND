@@ -60,10 +60,10 @@ const farms: FarmConfig[] = [
       97: '',
       56: '0xDbEfCc2F5a3AC23396cF59A850c3A310fcBAcCb3',
     },
-    tokenSymbol: 'TINVS',
+    tokenSymbol: 'TINV',
     tokenAddresses: {
       97: '',
-      56: '0xc3cabc1f565c88bdd416cfd65379f69e4ded649b',
+      56: '0xF20cE5F76efd7B68d038234CE1fe5b9B380f1740',
     },
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,

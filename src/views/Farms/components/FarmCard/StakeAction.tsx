@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, Heading, IconButton, AddIcon, MinusIcon, useModal } from '@pancakeswap-libs/uikit'
+import { Button, Flex, Heading, IconButton, AddIcon, MinusIcon, useModal } from 'tinvs-uikit'
 import useI18n from 'hooks/useI18n'
 import useStake from 'hooks/useStake'
 import useUnstake from 'hooks/useUnstake'
@@ -29,7 +29,7 @@ const StakeAction: React.FC<FarmCardActionsProps> = ({ stakedBalance, tokenBalan
   const { onStake } = useStake(pid)
   const { onUnstake } = useUnstake(pid)
 
-  const rawStakedBalance = getBalanceNumber(stakedBalance)
+  const rawStakedBalance = getBalanceNumber(stakedBalance, pid)
   const displayBalance = rawStakedBalance.toLocaleString()
 
   const [onPresentDeposit] = useModal(<DepositModal max={tokenBalance} onConfirm={onStake} tokenName={tokenName} depositFeeBP={depositFeeBP} />)

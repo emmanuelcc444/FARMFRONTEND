@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, Heading } from '@pancakeswap-libs/uikit'
+import { Button, Flex, Heading } from 'tinvs-uikit'
 import useI18n from 'hooks/useI18n'
 import { useHarvest } from 'hooks/useHarvest'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -25,7 +25,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
   const { onReward } = useHarvest(pid)
   const { onStake } = useStake(pid)
 
-  const rawEarningsBalance = getBalanceNumber(earnings)
+  const rawEarningsBalance = getBalanceNumber(earnings, 0)
   const displayBalance = rawEarningsBalance.toLocaleString()
 
   return (

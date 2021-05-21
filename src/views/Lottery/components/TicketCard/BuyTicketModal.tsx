@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Modal } from '@pancakeswap-libs/uikit'
+import { Button, Modal } from 'tinvs-uikit'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 import TicketInput from 'components/TicketInput'
 import ModalActions from 'components/ModalActions'
@@ -15,17 +15,17 @@ interface BuyTicketModalProps {
   tokenName?: string
 }
 
-const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
+const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss, tokenName }) => {
   const [val, setVal] = useState('1')
   const [pendingTx, setPendingTx] = useState(false)
   const [, setRequestedBuy] = useState(false)
   const TranslateString = useI18n()
   const fullBalance = useMemo(() => {
-    return getFullDisplayBalance(max)
+    return getFullDisplayBalance(max, '')
   }, [max])
 
   const maxTickets = useMemo(() => {
-    return parseInt(getFullDisplayBalance(max.div(new BigNumber(10))))
+    return parseInt(getFullDisplayBalance(max.div(new BigNumber(10)), ''))
   }, [max])
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => setVal(e.currentTarget.value)

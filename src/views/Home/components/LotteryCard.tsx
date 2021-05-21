@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button, useModal } from '@pancakeswap-libs/uikit'
+import { Heading, Card, CardBody, Button, useModal } from 'tinvs-uikit'
 import { getCakeAddress } from 'utils/addressHelpers'
 import { getBalanceNumber } from 'utils/formatBalance'
 import useI18n from 'hooks/useI18n'
@@ -81,7 +81,7 @@ const FarmedStakingCard = () => {
         <Actions>
           <Button
             id="dashboard-collect-winnings"
-            disabled={getBalanceNumber(claimAmount) === 0 || requesteClaim}
+            disabled={getBalanceNumber(claimAmount, 0) === 0 || requesteClaim}
             onClick={handleClaim}
             style={{ marginRight: '8px' }}
           >

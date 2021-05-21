@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useModal, Button, Text } from '@pancakeswap-libs/uikit'
+import { useModal, Button, Text } from 'tinvs-uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import BigNumber from 'bignumber.js'
 import { Contract } from 'web3-eth-contract'
@@ -101,7 +101,7 @@ const IfoCardContribute: React.FC<Props> = ({
             ? userInfo.claimed
               ? 'Claimed'
               : getBalanceNumber(offeringTokenBalance, tokenDecimals).toFixed(4)
-            : getBalanceNumber(new BigNumber(userInfo.amount)).toFixed(4)
+            : getBalanceNumber(new BigNumber(userInfo.amount), 0).toFixed(4)
         }
         onClick={isFinished ? claim : onPresentContributeModal}
       />

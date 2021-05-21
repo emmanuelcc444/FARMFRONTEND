@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody } from '@pancakeswap-libs/uikit'
+import { Card, CardBody } from 'tinvs-uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalClaim } from 'hooks/useTickets'
 import PrizesWonContent from './PrizesWonContent'
@@ -29,7 +29,7 @@ const StyledCard = styled(Card)`
 const YourPrizesCard: React.FC = () => {
   const { claimAmount } = useTotalClaim()
 
-  const winnings = getBalanceNumber(claimAmount)
+  const winnings = getBalanceNumber(claimAmount, 0)
   const isAWin = winnings > 0
 
   return (

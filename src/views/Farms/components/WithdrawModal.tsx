@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import { Button, Modal } from '@pancakeswap-libs/uikit'
+import { Button, Modal } from 'tinvs-uikit'
 import ModalActions from 'components/ModalActions'
 import TokenInput from 'components/TokenInput'
 import useI18n from 'hooks/useI18n'
@@ -17,9 +17,8 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
   const [val, setVal] = useState('')
   const [pendingTx, setPendingTx] = useState(false)
   const TranslateString = useI18n()
-  const fullBalance = useMemo(() => {
-    return getFullDisplayBalance(max)
-  }, [max])
+  console.log(tokenName)
+  const fullBalance = getFullDisplayBalance(max, tokenName)
 
   const handleChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => {

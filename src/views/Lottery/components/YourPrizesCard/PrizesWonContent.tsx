@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Heading, Won, useModal } from '@pancakeswap-libs/uikit'
+import { Button, Heading, Won, useModal } from 'tinvs-uikit'
 import useI18n from 'hooks/useI18n'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useMultiClaimLottery } from 'hooks/useBuyLottery'
@@ -59,7 +59,7 @@ const PrizesWonContent: React.FC = () => {
     }
   }, [onMultiClaim, setRequestedClaim])
 
-  const winnings = getBalanceNumber(claimAmount).toFixed(2)
+  const winnings = getBalanceNumber(claimAmount, 0).toFixed(2)
 
   return (
     <StyledCardContentInner>

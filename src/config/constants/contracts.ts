@@ -3,6 +3,10 @@ export default {
     56: '0xc3cabc1f565c88bdd416cfd65379f69e4ded649b',
     97: '',
   },
+  bee: {
+    56: '0xF20cE5F76efd7B68d038234CE1fe5b9B380f1740',
+    97: '',
+  },
   masterChef: {
     56: '0x60E2D2732bfB34a20ed931C200eBc86F6516b373',
     97: '',

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@pancakeswap-libs/uikit'
+import { Heading, Card, CardBody, Button } from 'tinvs-uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import BigNumber from 'bignumber.js'
 import useI18n from 'hooks/useI18n'
@@ -44,8 +44,8 @@ const FarmedStakingCard = () => {
   const { account } = useWallet()
   const TranslateString = useI18n()
   const farmsWithBalance = useFarmsWithBalance()
-  const cakeBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
-  const TINvSPrice = usePriceCakeBusd().toNumber()
+  const cakeBalance = getBalanceNumber(useTokenBalance(getCakeAddress()), 0)
+  const eggPrice = usePriceCakeBusd().toNumber()
   const allEarnings = useAllEarnings()
   const earningsSum = allEarnings.reduce((accum, earning) => {
     return accum + new BigNumber(earning).div(new BigNumber(10).pow(18)).toNumber()
@@ -69,18 +69,18 @@ const FarmedStakingCard = () => {
     <StyledFarmStakingCard>
       <CardBody>
         <Heading size="xl" mb="24px">
-          {TranslateString(542, 'Farms & Staking')}
+          {TranslateString(542, 'Honeycomb Farms & Pools')}
         </Heading>
         <CardImage src="/images/egg/2.png" alt="cake logo" width={64} height={64} />
         <Block>
-          <Label>{TranslateString(544, 'EGG to Harvest')}</Label>
+          <Label>{TranslateString(544, 'HNYCMB to Harvest')}</Label>
           <CakeHarvestBalance earningsSum={earningsSum}/>
-          <Label>~${(TINvSPrice * earningsSum).toFixed(2)}</Label>
+          <Label>~${(eggPrice * earningsSum).toFixed(2)}</Label>
         </Block>
         <Block>
-          <Label>{TranslateString(546, 'TINvS in Wallet')}</Label>
+          <Label>{TranslateString(546, 'HNYCMB in Wallet')}</Label>
           <CakeWalletBalance cakeBalance={cakeBalance} />
-          <Label>~${(TINvSPrice * cakeBalance).toFixed(2)}</Label>
+          <Label>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
         </Block>
         <Actions>
           {account ? (
@@ -91,7 +91,7 @@ const FarmedStakingCard = () => {
               fullWidth
             >
               {pendingTx
-                ? TranslateString(548, 'Collecting TINvS')
+                ? TranslateString(548, 'Collecting HNYCMB')
                 : TranslateString(999, `Harvest all (${balancesWithValue.length})`)}
             </Button>
           ) : (

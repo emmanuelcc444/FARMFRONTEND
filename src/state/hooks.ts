@@ -79,9 +79,16 @@ export const usePriceCakeBusd = (): BigNumber => {
   // const bnbPriceUSD = usePriceBnbBusd()
   // const farm = useFarmFromPid(pid)
   // return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
-  const pid = 0; // EGG-BUSD LP
+  const pid = 0; // HNY-BUSD LP
   const farm = useFarmFromPid(pid);
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO;
+}
+
+export const usePriceBeeBusd = (): BigNumber => {
+  const bnbPriceUSD = new BigNumber(usePriceBnbBusd())
+  const pid = 3
+  const farm = useFarmFromPid(pid);
+  return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
 
 export const useTotalValue = (): BigNumber => {
@@ -91,6 +98,7 @@ export const useTotalValue = (): BigNumber => {
   let value = new BigNumber(0);
   for (let i = 0; i < farms.length; i++) {
     const farm = farms[i]
+    console.log("PID: ".concat(farms[i].pid.toString()))
     if (farm.lpTotalInQuoteToken) {
       let val;
       if (farm.quoteTokenSymbol === QuoteToken.BNB) {
@@ -101,6 +109,7 @@ export const useTotalValue = (): BigNumber => {
         val = (farm.lpTotalInQuoteToken);
       }
       value = value.plus(val);
+      console.log("VAL: ".concat(val))
     }
   }
   return value;

@@ -1,4 +1,6 @@
-import { MenuEntry } from '@pancakeswap-libs/uikit'
+import { MenuEntry } from 'tinvs-uikit'
+import { getCakeAddress, getBeeAddress } from 'utils/addressHelpers'
+
 
 const config: MenuEntry[] = [
   {
@@ -49,6 +51,14 @@ const config: MenuEntry[] = [
     label: 'Info',
     icon: 'InfoIcon',
     items: [
+      {
+        label: 'TINVS on PancakeSwap',
+        href: 'https://pancakeswap.info/token/'.concat(getCakeAddress()),
+      },
+      {
+        label: 'TINV on PancakeSwap',
+        href: 'https://pancakeswap.info/token/'.concat(getBeeAddress()),
+      },
       // {
       //   label: 'PancakeSwap',
       //   href: 'https://pancakeswap.info/token/0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6',

@@ -15366,11 +15366,11 @@ timsort@^0.3.0:
 
 tinvs-uikit@tinv-project/tinv-uikit:
   version "0.10.2"
-  resolved "https://codeload.github.com/tinv-project/tinv-uikit/tar.gz/9516a1d4ff87b2da71bbecfbeb6b85387f9f6770"
+  resolved "https://codeload.github.com/tinv-project/tinv-uikit/tar.gz/a61fdd9f1d100810e9d0f221d884ac478cb6b1c2"
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     react-transition-group "^4.4.1"
     styled-system "^5.1.5"
 
